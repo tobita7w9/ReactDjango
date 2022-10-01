@@ -1,6 +1,11 @@
-from django.urls import path
+from django.urls import path,include
 from . import apis
+from rest_framework import routers
+
+router=routers.DefaultRouter()
+router.register(r'samples',apis.HelloApi,'test-get')
+
 
 urlpatterns = [
-    path("hello/",apis.HelloApi.as_view(),name="test-get"),
+    path("hello/",include(router.urls)),
 ]

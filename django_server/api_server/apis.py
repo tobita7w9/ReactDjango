@@ -1,8 +1,9 @@
 from .models import SampleModel                         # モデル呼出
 from rest_framework.generics import ListCreateAPIView    # API
 from .serializers import SampleSerializer                # APIで渡すデータをJSON,XML変換
+from rest_framework import viewsets
 
-class HelloApi(ListCreateAPIView):
+class HelloApi(viewsets.ModelViewSet):
     # 対象とするモデルのオブジェクトを定義
     queryset = SampleModel.objects.all()
 
